@@ -7,6 +7,29 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## About The Project
+
+The objective of this exercise is to produce a set of endpoints that allows creating and retrieving sales orders, such as those that may result from an ecommerce purchase.
+
+This is a microcosm of an existing piece of functionality in most warehouse management systems (WMS), including our own.
+
+Here are the requirements:
+
+- You must use the latest version of PHP and of Laravel.
+- Other tools and libraries you choose to use are up to you.
+- The *create order* and *retrieve order* endpoints should follow the JSON-API spec.
+- The models must be such that:
+- A customer has products;
+- A product has inventory;
+- An order has line items;
+- The line items in an order reference a given quantity of a given product;
+- Orders have a ready_to_ship property which determines whether there is enough inventory to fulfill the order given other existing orders for the same products.
+- The functionality should be tested.
+- Which type(s) of test(s) you choose to use is up to you.
+- The code must be delivered in a GitHub repo.
+
+This exercise is meant to assess how you work with our back end tech stack, model business entities, and design APIs and tests.
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
