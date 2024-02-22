@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreLineItemRequest;
-use App\Http\Requests\UpdateLineItemRequest;
-use App\Models\LineItem;
+use App\Http\Requests\StoreWarehouseRequest;
+use App\Http\Requests\UpdateWarehouseRequest;
+use App\Models\Warehouse;
 
-class LineItemController extends Controller
+class WarehouseController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return Warehouse::all();
     }
 
     /**
@@ -27,7 +27,7 @@ class LineItemController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreLineItemRequest $request)
+    public function store(StoreWarehouseRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class LineItemController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(LineItem $lineItem)
+    public function show(Warehouse $warehouse)
     {
         //
     }
@@ -43,7 +43,7 @@ class LineItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(LineItem $lineItem)
+    public function edit(Warehouse $warehouse)
     {
         //
     }
@@ -51,7 +51,7 @@ class LineItemController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateLineItemRequest $request, LineItem $lineItem)
+    public function update(UpdateWarehouseRequest $request, Warehouse $warehouse)
     {
         //
     }
@@ -59,7 +59,7 @@ class LineItemController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(LineItem $lineItem)
+    public function destroy(Warehouse $warehouse)
     {
         //
     }
