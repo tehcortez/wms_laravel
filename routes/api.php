@@ -3,9 +3,9 @@
 use App\Http\Controllers\Api\V1\CustomerController;
 use App\Http\Controllers\Api\V1\InventoryController;
 use App\Http\Controllers\Api\V1\LineItemController;
-use App\Http\Controllers\Api\V1\OrdersController;
 use App\Http\Controllers\Api\V1\ProductController;
 use App\Http\Controllers\Api\V1\WarehouseController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,7 +31,7 @@ Route::group(
         Route::apiResource('customer', CustomerController::class);
         Route::apiResource('inventory', InventoryController::class);
         Route::apiResource('line-item', LineItemController::class);
-        Route::apiResource('orders', OrdersController::class);
+        Route::apiResource('orders', OrderController::class);
         Route::apiResource('product', ProductController::class);
         Route::apiResource('warehouse', WarehouseController::class);
     }
