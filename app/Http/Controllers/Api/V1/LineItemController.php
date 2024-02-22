@@ -38,7 +38,7 @@ class LineItemController extends Controller
      */
     public function show(LineItem $lineItem)
     {
-        //
+        return $lineItem;
     }
 
     /**

@@ -38,7 +38,7 @@ class InventoryController extends Controller
      */
     public function show(Inventory $inventory)
     {
-        //
+        return $inventory;
     }
 
     /**
