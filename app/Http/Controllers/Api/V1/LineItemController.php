@@ -14,7 +14,7 @@ class LineItemController extends Controller
      */
     public function index()
     {
-        //
+        return LineItem::all();
     }
 
     /**
