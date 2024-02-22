@@ -36,9 +36,10 @@ class OrdersController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Orders $orders)
+    public function show(string $orders)
     {
-        //
+        return Orders::find($orders);
+        return $orders;
     }
 
     /**
