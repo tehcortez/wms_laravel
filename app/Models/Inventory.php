@@ -11,4 +11,14 @@ class Inventory extends Model
     use HasFactory, HasUuids;
 
     protected $primaryKey = 'inventory_id';
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id', 'product_id');
+    }
+
+    public function warehouse()
+    {
+        return $this->belongsTo(Warehouse::class, 'warehouse_id', 'warehouse_id');
+    }
 }
