@@ -14,7 +14,7 @@ class LineItemSeeder extends Seeder
     public function run(): void
     {
         LineItem::factory()
-            ->count(50)
+            ->count(60)
             ->create();
     }
 }

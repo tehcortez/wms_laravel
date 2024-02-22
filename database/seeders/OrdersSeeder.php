@@ -14,7 +14,7 @@ class OrdersSeeder extends Seeder
     {
         //
         Orders::factory()
-        ->count(50)
+        ->count(40)
         ->create();
     }
 }
