@@ -12,8 +12,12 @@ class Product extends Model
 
     protected $primaryKey = 'product_id';
 
-    public function inventory()
+    public function inventories()
     {
-        return $this->hasMany(Inventory::class, 'inventory_id', 'inventory_id');
+        return $this->hasMany(Inventory::class, 'product_id', 'product_id');
+    }
+
+    public function customers(){
+        return $this->belongsToMany(Customer::class, 'customer_product', 'product_id', 'customer_id');
     }
 }

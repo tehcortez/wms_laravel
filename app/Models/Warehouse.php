@@ -14,6 +14,6 @@ class Warehouse extends Model
 
     public function inventory()
     {
-        return $this->hasMany(Inventory::class, 'inventory_id', 'inventory_id');
+        return $this->hasMany(Inventory::class, 'warehouse_id', 'warehouse_id');
     }
 }

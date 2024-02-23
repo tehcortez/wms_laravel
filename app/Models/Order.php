@@ -17,8 +17,8 @@ class Order extends Model
         return $this->belongsTo(Customer::class, 'customer_id', 'customer_id');
     }
 
-    public function lineItem()
+    public function lineItems()
     {
-        return $this->hasMany(LineItem::class, 'line_item_id', 'line_item_id');
+        return $this->hasMany(LineItem::class, 'order_id', 'order_id');
     }
 }
