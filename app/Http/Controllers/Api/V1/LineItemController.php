@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreLineItemRequest;
 use App\Http\Requests\UpdateLineItemRequest;
+use App\Http\Resources\V1\LineItemCollection;
+use App\Http\Resources\V1\LineItemResource;
 use App\Models\LineItem;
 
 class LineItemController extends Controller
@@ -14,7 +16,7 @@ class LineItemController extends Controller
      */
     public function index()
     {
-        return LineItem::all();
+        return new LineItemCollection(LineItem::all());
     }
 
     /**
@@ -38,7 +40,7 @@ class LineItemController extends Controller
      */
     public function show(LineItem $lineItem)
     {
-        return $lineItem;
+        return new LineItemResource($lineItem);
     }
 
     /**
