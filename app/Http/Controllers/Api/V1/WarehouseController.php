@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreWarehouseRequest;
-use App\Http\Requests\UpdateWarehouseRequest;
+use App\Http\Requests\V1\StoreWarehouseRequest;
+use App\Http\Requests\V1\UpdateWarehouseRequest;
 use App\Http\Resources\V1\WarehouseCollection;
 use App\Http\Resources\V1\WarehouseResource;
 use App\Models\Warehouse;

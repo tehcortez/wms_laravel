@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreLineItemRequest;
-use App\Http\Requests\UpdateLineItemRequest;
+use App\Http\Requests\V1\StoreLineItemRequest;
+use App\Http\Requests\V1\UpdateLineItemRequest;
 use App\Http\Resources\V1\LineItemCollection;
 use App\Http\Resources\V1\LineItemResource;
 use App\Models\LineItem;
