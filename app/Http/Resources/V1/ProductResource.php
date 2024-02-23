@@ -22,6 +22,7 @@ class ProductResource extends JsonResource
             'height' => $this->height,
             'width' => $this->width,
             'depth' => $this->depth,
+            'inventories' => new InventoryCollection($this->inventories),
         ];
     }
 }
