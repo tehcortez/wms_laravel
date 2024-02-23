@@ -14,6 +14,10 @@ class Customer extends Model
 
     public function orders()
     {
-        return $this->hasMany(Order::class, 'order_id', 'order_id');
+        return $this->hasMany(Order::class, 'customer_id', 'customer_id');
+    }
+
+    public function products(){
+        return $this->belongsToMany(Product::class, 'customer_product', 'customer_id', 'product_id');
     }
 }

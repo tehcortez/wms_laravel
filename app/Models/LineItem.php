@@ -17,7 +17,7 @@ class LineItem extends Model
         return $this->belongsTo(Product::class, 'product_id', 'product_id');
     }
 
-    public function orders()
+    public function order()
     {
         return $this->belongsTo(Order::class, 'order_id', 'order_id');
     }
