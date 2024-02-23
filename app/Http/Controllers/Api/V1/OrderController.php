@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateOrderRequest;
 use App\Http\Resources\V1\OrderCollection;
 use App\Http\Resources\V1\OrderResource;
 use App\Models\Order;
+use App\Services\V1\ReadyToShipService;
 
 class OrderController extends Controller
 {
@@ -16,6 +17,8 @@ class OrderController extends Controller
      */
     public function index()
     {
+        $readyToShipService = new ReadyToShipService();
+        $readyToShipService->updateAllReadyToShipFlags();
         return new OrderCollection(Order::all());
     }
 
@@ -40,6 +43,8 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
+        $readyToShipService = new ReadyToShipService();
+        $readyToShipService->updateAllReadyToShipFlags();
         return new OrderResource($order);
     }
 
