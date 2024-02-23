@@ -16,10 +16,11 @@ class LineItemResource extends JsonResource
     {
         return [
             'line_item_id' => $this->line_item_id,
-            'productId' => $this->product_id,
+            // 'productId' => $this->product_id,
             'orderId' => $this->order_id,
             'quantity' => $this->quantity,
             'price' => $this->price,
+            'product' => new ProductResource($this->product),
         ];
     }
 }

@@ -15,12 +15,13 @@ class InventoryResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'inventoryId' => $this->customer_id,
+            'inventoryId' => $this->inventory_id,
             'productId' => $this->product_id,
-            'warehouseId' => $this->warehouse_id,
-            'quantity_available' => $this->quantity_available,
+            // 'warehouseId' => $this->warehouse_id,
+            'quantityAvailable' => $this->quantity_available,
             'minimumStockLevel' => $this->minimum_stock_level,
             'maximumStockLevel' => $this->maximum_stock_level,
+            'warehouse' => new WarehouseResource($this->warehouse),
         ];
     }
 }

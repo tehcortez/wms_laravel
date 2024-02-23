@@ -24,6 +24,8 @@ class CustomerResource extends JsonResource
             'state' => $this->state,
             'postalCode' => $this->postal_code,
             'country' => $this->country,
+            'orders' => new OrderCollection($this->orders),
+            'products' => new ProductCollection($this->products),
         ];
     }
 }
