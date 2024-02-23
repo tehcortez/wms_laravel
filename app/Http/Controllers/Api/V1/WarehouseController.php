@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreWarehouseRequest;
 use App\Http\Requests\UpdateWarehouseRequest;
+use App\Http\Resources\V1\WarehouseCollection;
+use App\Http\Resources\V1\WarehouseResource;
 use App\Models\Warehouse;
 
 class WarehouseController extends Controller
@@ -14,7 +16,7 @@ class WarehouseController extends Controller
      */
     public function index()
     {
-        return Warehouse::all();
+        return new WarehouseCollection(Warehouse::all());
     }
 
     /**
@@ -38,7 +40,7 @@ class WarehouseController extends Controller
      */
     public function show(Warehouse $warehouse)
     {
-        return $warehouse;
+        return new WarehouseResource($warehouse);
     }
 
     /**
