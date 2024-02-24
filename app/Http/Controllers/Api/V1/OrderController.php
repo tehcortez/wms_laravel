@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\V1\StoreLineItemRequest;
 use App\Http\Requests\V1\StoreOrderRequest;
 use App\Http\Requests\V1\UpdateOrderRequest;
 use App\Http\Resources\V1\OrderCollection;
 use App\Http\Resources\V1\OrderResource;
+use App\Models\LineItem;
 use App\Models\Order;
 use App\Services\V1\ReadyToShipService;
 
@@ -35,7 +37,21 @@ class OrderController extends Controller
      */
     public function store(StoreOrderRequest $request)
     {
-        return new OrderResource(Order::create($request->all()));
+        $order = Order::create($request->all());
+        $readyToShipService = new ReadyToShipService();
+        $readyToShipService->updateAllReadyToShipFlags();
+        $order->refresh();
+        if(isset($request->lineItems)){
+            foreach($request->lineItems as $lineItem) {
+                $order->lineItems()->create([
+                    'product_id' => $lineItem['productId'],
+                    'order_id'=>$order->order_id,
+                    'quantity'=>$lineItem['quantity'],
+                    'price'=>$lineItem['price'],
+                ]);
+            }
+        }
+        return new OrderResource($order);
     }
 
     /**
@@ -45,6 +61,7 @@ class OrderController extends Controller
     {
         $readyToShipService = new ReadyToShipService();
         $readyToShipService->updateAllReadyToShipFlags();
+        $order->refresh();
         return new OrderResource($order);
     }
 
