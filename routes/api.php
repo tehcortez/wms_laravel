@@ -27,7 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //routes for api/v1
 Route::group(
     ['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\V1'],
-    function (){
+    function () {
         Route::apiResource('customer', CustomerController::class);
         Route::apiResource('inventory', InventoryController::class);
         Route::apiResource('line-item', LineItemController::class);

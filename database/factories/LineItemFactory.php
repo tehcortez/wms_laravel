@@ -20,6 +20,7 @@ class LineItemFactory extends Factory
     {
         $order_ids = DB::table('orders')->pluck('order_id');
         $product_ids = DB::table('products')->pluck('product_id');
+
         return [
             'line_item_id' => Uuid::uuid4()->toString(),
             'order_id' => $this->faker->randomElement($order_ids),

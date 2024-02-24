@@ -24,10 +24,10 @@ class StoreLineItemRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'productId' => ['required','uuid','exists:'.Product::class.',product_id'],
-            'orderId' => ['required','uuid','exists:'.Order::class.',order_id'],
-            'quantity' => ['required','integer'],
-            'price' => ['required','integer'],
+            'productId' => ['required', 'uuid', 'exists:'.Product::class.',product_id'],
+            'orderId' => ['required', 'uuid', 'exists:'.Order::class.',order_id'],
+            'quantity' => ['required', 'integer'],
+            'price' => ['required', 'integer'],
         ];
     }
 

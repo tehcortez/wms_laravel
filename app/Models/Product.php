@@ -17,7 +17,8 @@ class Product extends Model
         return $this->hasMany(Inventory::class, 'product_id', 'product_id');
     }
 
-    public function customers(){
+    public function customers()
+    {
         return $this->belongsToMany(Customer::class, 'customer_product', 'product_id', 'customer_id');
     }
 }

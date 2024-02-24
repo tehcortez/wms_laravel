@@ -19,7 +19,7 @@ class OrderResource extends JsonResource
             'customerId' => $this->customer_id,
             'totalPrice' => $this->total_price,
             'readyToShip' => $this->ready_to_ship,
-            'lineItems' => new LineItemCollection($this->lineItems)
+            'lineItems' => new LineItemCollection($this->lineItems),
         ];
     }
 }

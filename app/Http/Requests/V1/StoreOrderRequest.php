@@ -24,20 +24,20 @@ class StoreOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'customerId' => ['required','uuid','exists:'.Customer::class.',customer_id'],
-            'totalPrice' => ['required','integer'],
+            'customerId' => ['required', 'uuid', 'exists:'.Customer::class.',customer_id'],
+            'totalPrice' => ['required', 'integer'],
             'readyToShip' => ['boolean'],
             'lineItems' => ['array'],
-            'lineItems.*.productId' => ['required','uuid','exists:'.Product::class.',product_id'],
-            'lineItems.*.quantity' => ['required','integer'],
-            'lineItems.*.price' => ['required','integer'],
+            'lineItems.*.productId' => ['required', 'uuid', 'exists:'.Product::class.',product_id'],
+            'lineItems.*.quantity' => ['required', 'integer'],
+            'lineItems.*.price' => ['required', 'integer'],
         ];
     }
 
     protected function prepareForValidation()
     {
         $lineItems = $this->lineItems;
-        foreach($lineItems as &$lineItem){
+        foreach ($lineItems as &$lineItem) {
             $lineItem = array_merge($lineItem, ['product_id' => $lineItem['productId']]);
         }
 

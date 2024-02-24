@@ -22,10 +22,10 @@ class ProductFactory extends Factory
             'product_id' => Uuid::uuid4()->toString(),
             'name' => $this->faker->word(),
             'description' => $this->faker->text(),
-            'weight' => $this->faker->numberBetween(1,10000),   //stored in grams
-            'height' => $this->faker->numberBetween(1,10000),   //stored in milimiters
-            'width' => $this->faker->numberBetween(1,10000),    //stored in milimiters
-            'depth' => $this->faker->numberBetween(1,10000),    //stored in milimiters
+            'weight' => $this->faker->numberBetween(1, 10000),   //stored in grams
+            'height' => $this->faker->numberBetween(1, 10000),   //stored in milimiters
+            'width' => $this->faker->numberBetween(1, 10000),    //stored in milimiters
+            'depth' => $this->faker->numberBetween(1, 10000),    //stored in milimiters
         ];
     }
 }
