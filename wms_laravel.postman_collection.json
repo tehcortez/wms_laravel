@@ -1,0 +1,386 @@
+{
+	"info": {
+		"_postman_id": "cdd25eb0-2409-462c-be47-25c31dd4de71",
+		"name": "wms_laravel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9886454"
+	},
+	"item": [
+		{
+			"name": "GET customer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/customer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET customer/id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/customer/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"customer",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "030dc3b5-3439-44e1-b129-a840a44dbfd9"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Inventory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/inventory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"inventory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Inventory/id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/inventory/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"inventory",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "005fe55d-2910-4e17-941a-385c8f398cc3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET lineItem",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/line-item",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"line-item"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET lineItem/id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/line-item/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"line-item",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "02ae97dd-510b-455f-9a65-f474f7214072"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET order",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST order",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerId\": \"030dc3b5-3439-44e1-b129-a840a44dbfd9\",\n    \"totalPrice\": 123456,\n    \"readyToShip\": false,\n    \"lineItems\": [\n        {\n            \"productId\": \"003fa838-a4dc-475a-b3eb-2b907bda1a63\",\n            \"quantity\": 8,\n            \"price\": 71644\n        },\n        {\n            \"productId\": \"032ae27f-8862-4cb7-b80f-0b0bc361ac32\",\n            \"quantity\": 1,\n            \"price\": 8999\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST lineItem",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productId\": \"003fa838-a4dc-475a-b3eb-2b907bda1a63\",\n    \"quantity\": 8,\n    \"price\": 71644\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/line-item",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"line-item"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET order/id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/order/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"order",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "0da948e6-eb3f-41ad-844b-f3f07a103d32"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET product/id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/product/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "003fa838-a4dc-475a-b3eb-2b907bda1a63"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET warehouse",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/warehouse",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"warehouse"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET warehouse/id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/warehouse/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"warehouse",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "119001df-370c-49a0-ac19-268227c915d8"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
