@@ -20,6 +20,7 @@ class InventoryFactory extends Factory
     {
         $product_ids = DB::table('products')->pluck('product_id');
         $warehouse_ids = DB::table('warehouses')->pluck('warehouse_id');
+
         return [
             'inventory_id' => Uuid::uuid4()->toString(),
             'product_id' => $this->faker->randomElement($product_ids),

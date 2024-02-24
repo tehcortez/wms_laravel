@@ -19,6 +19,7 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         $customer_ids = DB::table('customers')->pluck('customer_id');
+
         return [
             'order_id' => Uuid::uuid4()->toString(),
             'customer_id' => $this->faker->randomElement($customer_ids),

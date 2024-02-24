@@ -15,7 +15,7 @@ class Order extends Model
     protected $fillable = [
         'customer_id',
         'total_price',
-        'ready_to_ship'
+        'ready_to_ship',
     ];
 
     public function customer()
