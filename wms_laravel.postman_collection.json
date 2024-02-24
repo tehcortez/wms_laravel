@@ -233,7 +233,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"productId\": \"003fa838-a4dc-475a-b3eb-2b907bda1a63\",\n    \"quantity\": 8,\n    \"price\": 71644\n}",
+					"raw": "{\n    \"productId\": \"003fa838-a4dc-475a-b3eb-2b907bda1a63\",\n    \"orderId\": \"07207800-6d92-4f49-b483-7c161291fbeb\",\n    \"quantity\": 8,\n    \"price\": 71644\n}",
 					"options": {
 						"raw": {
 							"language": "json"
