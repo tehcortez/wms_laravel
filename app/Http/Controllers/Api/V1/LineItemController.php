@@ -32,7 +32,7 @@ class LineItemController extends Controller
      */
     public function store(StoreLineItemRequest $request)
     {
-        //
+        return new LineItemResource(LineItem::create($request->all()));
     }
 
     /**
