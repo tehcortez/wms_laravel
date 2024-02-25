@@ -18,7 +18,7 @@ class OrderResource extends JsonResource
             'orderId' => $this->order_id,
             'customerId' => $this->customer_id,
             'totalPrice' => $this->total_price,
-            'readyToShip' => $this->ready_to_ship,
+            'readyToShip' => boolval($this->ready_to_ship),
             'lineItems' => new LineItemCollection($this->lineItems),
         ];
     }
