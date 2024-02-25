@@ -37,9 +37,6 @@ class OrderController extends Controller
     public function store(StoreOrderRequest $request)
     {
         $order = Order::create($request->all());
-        $readyToShipService = new ReadyToShipService();
-        $readyToShipService->updateAllReadyToShipFlags();
-        $order->refresh();
         if (isset($request->lineItems)) {
             foreach ($request->lineItems as $lineItem) {
                 $order->lineItems()->create([
@@ -50,6 +47,9 @@ class OrderController extends Controller
                 ]);
             }
         }
+        $readyToShipService = new ReadyToShipService();
+        $readyToShipService->updateAllReadyToShipFlags();
+        $order->refresh();
 
         return new OrderResource($order);
     }
