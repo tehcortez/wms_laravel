@@ -5,7 +5,7 @@ namespace App\Services\V1;
 use App\Models\Order;
 use App\Models\Product;
 
-class ReadyToShipService
+class ReadyToShipService implements ReadyToShipServiceInterface
 {
     public function updateAllReadyToShipFlags(): void
     {
