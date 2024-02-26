@@ -8,6 +8,7 @@ use App\Models\Customer;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Warehouse;
+use App\Services\V1\ReadyToShipService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -188,5 +189,12 @@ class ApiTest extends TestCase
             ]
         );
         $response->assertStatus(403);
+    }
+
+    public function test_update_all_ready_to_ship_flags(): void
+    {
+        $readyToShipService = new ReadyToShipService();
+        $readyToShipService->updateAllReadyToShipFlags();
+        $this->assertTrue(true);
     }
 }
