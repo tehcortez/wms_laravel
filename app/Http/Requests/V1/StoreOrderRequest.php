@@ -40,7 +40,6 @@ class StoreOrderRequest extends FormRequest
         foreach ($lineItems as &$lineItem) {
             $lineItem = array_merge($lineItem, ['product_id' => $lineItem['productId']]);
         }
-
         $this->merge(
             [
                 'customer_id' => $this->customerId,
@@ -49,5 +48,8 @@ class StoreOrderRequest extends FormRequest
                 'line_items' => $lineItems,
             ]
         );
+        if(!isset($this->readyToShip)){
+            $this->merge(['ready_to_ship' => false]);
+        }
     }
 }

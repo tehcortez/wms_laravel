@@ -16,7 +16,7 @@ return new class extends Migration
             $table->uuid('customer_id');
             $table->foreign('customer_id')->references('customer_id')->on('customers');
             $table->integer('total_price');
-            $table->boolean('ready_to_ship');
+            $table->boolean('ready_to_ship')->default(0);
             $table->timestamps();
         });
     }
