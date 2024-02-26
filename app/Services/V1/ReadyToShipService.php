@@ -4,19 +4,35 @@ namespace App\Services\V1;
 
 use App\Models\Order;
 use App\Models\Product;
+use Illuminate\Database\Eloquent\Collection;
 
 class ReadyToShipService implements ReadyToShipServiceInterface
 {
     public function updateAllReadyToShipFlags(): void
     {
-        $productAvailabilityMap = $this->getProductAvailabilityMap();
-        $ordersWithLineItems = Order::all();
-        foreach ($ordersWithLineItems as $order) {
+        $productCollection = Product::all();
+        $productAvailabilityMap = $this->getProductAvailabilityMap($productCollection);
+        $orderCollection = Order::all();
+        foreach ($orderCollection as $order) {
             $productAvailabilityMap = $this->updateProductAvailabilityMap($productAvailabilityMap, $order);
         }
     }
 
-    public function getQuantityAvailable(Product $product)
+    /**
+     * return a map with key as product_id and value as product availability
+     * @return array<non-empty-string,integer>
+     */
+    private function getProductAvailabilityMap(Collection $productCollection): array
+    {
+        $productAvailabilityMap = [];
+        foreach ($productCollection as $product) {
+            $productAvailabilityMap[$product->product_id] = $this->getQuantityAvailableInStock($product);
+        }
+
+        return $productAvailabilityMap;
+    }
+
+    private function getQuantityAvailableInStock(Product $product)
     {
         $quantityAvailable = 0;
         foreach ($product->inventories as $inventory) {
@@ -26,22 +42,11 @@ class ReadyToShipService implements ReadyToShipServiceInterface
         return $quantityAvailable;
     }
 
-    public function getProductAvailabilityMap(): array
-    {
-        $productsWithInventories = Product::all();
-        $productAvailabilityMap = [];
-        foreach ($productsWithInventories as $product) {
-            $productAvailabilityMap[$product->product_id] = $this->getQuantityAvailable($product);
-        }
-
-        return $productAvailabilityMap;
-    }
-
-    public function updateProductAvailabilityMap(array $productAvailabilityMap, Order $order): array
+    private function updateProductAvailabilityMap(array $productAvailabilityMap, Order $order): array
     {
         $readyToShip = true;
         foreach ($order->lineItems as $lineItem) {
-            if (! isset($productAvailabilityMap[$lineItem->product_id])) {
+            if (!$this->productIdExistsInAvailabilityMap($productAvailabilityMap, $lineItem->product_id)) {
                 $readyToShip = false;
 
                 continue;
@@ -51,9 +56,20 @@ class ReadyToShipService implements ReadyToShipServiceInterface
                 $readyToShip = false;
             }
         }
-        $order->ready_to_ship = $readyToShip;
-        $order->update(['ready_to_ship' => $readyToShip]);
+        $this->updateReadyToShipFlagInOrderModel($order, $readyToShip);
 
         return $productAvailabilityMap;
+    }
+
+    private function productIdExistsInAvailabilityMap(array $productAvailabilityMap, string $product_id): bool{
+        if(isset($productAvailabilityMap[$product_id])){
+            return true;
+        }
+        return false;
+    }
+
+    private function updateReadyToShipFlagInOrderModel(Order $order, bool $readyToShip): void{
+        $order->ready_to_ship = $readyToShip;
+        $order->update(['ready_to_ship' => $readyToShip]);
     }
 }
