@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property bool $ready_to_ship
+ * @property list<LineItem> $lineItems
+ * @property Customer $customer
+ */
 class Order extends Model
 {
     use HasFactory, HasUuids;
