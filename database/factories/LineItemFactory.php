@@ -2,12 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\LineItem;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\DB;
 use Ramsey\Uuid\Uuid;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\LineItem>
+ * @extends Factory<LineItem>
  */
 class LineItemFactory extends Factory
 {
