@@ -26,20 +26,10 @@ class ReadyToShipService implements ReadyToShipServiceInterface
     {
         $productAvailabilityMap = [];
         foreach ($productCollection as $product) {
-            $productAvailabilityMap[$product->product_id] = $this->getQuantityAvailableInStock($product);
+            $productAvailabilityMap[$product->product_id] = $product->getQuantityAvailableInStock();
         }
 
         return $productAvailabilityMap;
-    }
-
-    private function getQuantityAvailableInStock(Product $product)
-    {
-        $quantityAvailable = 0;
-        foreach ($product->inventories as $inventory) {
-            $quantityAvailable += $inventory->quantity_available;
-        }
-
-        return $quantityAvailable;
     }
 
     private function updateProductAvailabilityMap(array $productAvailabilityMap, Order $order): array

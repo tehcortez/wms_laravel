@@ -23,4 +23,13 @@ class Product extends Model
     {
         return $this->belongsToMany(Customer::class, 'customer_product', 'product_id', 'customer_id');
     }
+
+    public function getQuantityAvailableInStock(): int
+    {
+        $quantityAvailable = 0;
+        foreach ($this->inventories as $inventory) {
+            $quantityAvailable += $inventory->quantity_available;
+        }
+        return $quantityAvailable;
+    }
 }

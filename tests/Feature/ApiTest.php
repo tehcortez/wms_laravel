@@ -5,6 +5,7 @@ namespace Tests\Feature;
 // use Illuminate\Foundation\Testing\RefreshDatabase;
 
 use App\Models\Customer;
+use App\Models\Inventory;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Warehouse;
@@ -100,7 +101,7 @@ class ApiTest extends TestCase
         $product = Product::factory()->create();
         Customer::factory()->create();
         $order = Order::factory()->create();
-        
+
         $response = $this->postJson(
             '/api/v1/line-item',
             [
@@ -196,5 +197,16 @@ class ApiTest extends TestCase
         $readyToShipService = new ReadyToShipService();
         $readyToShipService->updateAllReadyToShipFlags();
         $this->assertTrue(true);
+    }
+
+    public function test_product_quantity_available_in_stock(): void
+    {
+        $warehouseA = Warehouse::factory()->create();
+        $warehouseB = Warehouse::factory()->create();
+        $product = Product::factory()
+            ->has(Inventory::factory()->for($warehouseA)->state(['quantity_available'=>4]))
+            ->has(Inventory::factory()->for($warehouseB)->state(['quantity_available'=>2]))
+            ->create();
+        $this->assertEquals(6,$product->getQuantityAvailableInStock());
     }
 }
